@@ -4,20 +4,47 @@ import { openDB } from 'idb'
 
 export const useCounterStore = defineStore('counter', () => {
   const counState = ref({
-    typeLoding: 0 // 0: 未加载 1: 加载中
+    typeLoding: 0, // 0: 未加载 1: 加载中
+    previewData: {} //preview的数据
   })
+  const currentNetwork = ref(navigator.onLine)
+  window.addEventListener('online', () => {
+    currentNetwork.value = true
+  })
+  window.addEventListener('offline', () => {
+    currentNetwork.value = false
+  })
+  let versionNumber = 3
   let db
-  openDB('mindshow_dom', 1, {
-    upgrade(db) {
+  openDB('mindshow_dom', versionNumber, {
+    upgrade (db) {
       if (!db.objectStoreNames.contains('edit_data')) {
         db.createObjectStore('edit_data')
+      }
+      if (!db.objectStoreNames.contains('edit_preview')) {
+        db.createObjectStore('edit_preview')
       }
     }
   }).then((res) => {
     db = res
   })
+  const initialization = async () => {
+    db = await openDB('mindshow_dom', versionNumber, {
+      upgrade (db) {
+        if (!db.objectStoreNames.contains('edit_data')) {
+          db.createObjectStore('edit_data')
+        }
+        if (!db.objectStoreNames.contains('edit_preview')) {
+          db.createObjectStore('edit_preview')
+        }
+      }
+    })
+    return new Promise((resolve) => {
+      resolve()
+    })
+  }
   const DbPutFn = (one, two, three, four) => {
-    console.log(one, two, three, four)
+    // console.log(one, two, three, four)
     db.put(one, two, three)
   }
   const DbDeleteFn = (one, two, three) => {
@@ -25,7 +52,10 @@ export const useCounterStore = defineStore('counter', () => {
     db.delete(one, two)
   }
   const DbGetFn = async (one, two) => {
-    console.log(one, two)
+    if (!db) {
+      await initialization()
+    }
+    // console.log(one, two)
     let IdList = await db.getAllKeys('edit_data')
     let data = await db.getAll('edit_data')
     return new Promise((resolve) => {
@@ -35,5 +65,14 @@ export const useCounterStore = defineStore('counter', () => {
       })
     })
   }
-  return { counState, DbPutFn, DbDeleteFn, DbGetFn }
+  const DbGetPerverFn = async (one, two) => {
+    if (!db) {
+      await initialization()
+    }
+    let data = await db.get(one, two)
+    return new Promise((resolve) => {
+      resolve(data)
+    })
+  }
+  return { counState, currentNetwork, DbPutFn, DbDeleteFn, DbGetFn, DbGetPerverFn }
 })

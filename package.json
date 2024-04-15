@@ -1,6 +1,6 @@
 {
   "name": "electron-app",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "An Electron application with Vue",
   "main": "./out/main/index.js",
   "author": "example.com",
@@ -18,24 +18,26 @@
     "build:linux": "npm run build && electron-builder --linux"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@electron-toolkit/preload": "^3.0.0",
+    "@electron-toolkit/utils": "^3.0.0",
+    "animate.css": "^4.1.1",
     "ant-design-vue": "^4.1.2",
     "chroma-js": "^2.4.2",
+    "electron-updater": "^6.1.7",
     "idb": "^8.0.0",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
     "markdown-it": "^14.1.0",
     "pinia": "^2.1.7",
-    "vue-router": "^4.3.0",
-    "@electron-toolkit/preload": "^3.0.0",
-    "@electron-toolkit/utils": "^3.0.0",
-    "electron-updater": "^6.1.7"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "circular-json": "^0.5.9",
     "@electron-toolkit/eslint-config": "^1.0.1",
     "@rushstack/eslint-patch": "^1.6.1",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vue/eslint-config-prettier": "^9.0.0",
+    "circular-json": "^0.5.9",
     "electron": "^28.2.0",
     "electron-builder": "^24.9.1",
     "electron-vite": "^2.0.0",

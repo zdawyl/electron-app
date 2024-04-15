@@ -35,17 +35,12 @@ export const ExPortGetBase64Image = (src) => {
 }
 export const ExportEditData = async (data) => {
   try {
-    if (data === undefined) return
-    if (typeof data !== 'string') return
-    if (data.length < 30) return
-    let res_data = circularJson.parse(data)
-    if (res_data.type === 'mindshow_edit_list') {
-      counterStore.counState.typeLoding = 1
-      let html = res_data
-      html = await edit_list_base64_fn(html)
-      counterStore.DbPutFn('edit_data', html, 'id' + html.docId)
-      counterStore.counState.typeLoding = 0
-    }
+    let res_data = data
+    counterStore.counState.typeLoding = 1
+    let html = res_data
+    html = await edit_list_base64_fn(html)
+    counterStore.DbPutFn('edit_data', html, 'id' + html.docId)
+    counterStore.counState.typeLoding = 0
   } catch (error) {
     console.log(error)
   }
@@ -73,7 +68,7 @@ const edit_list_base64_fn = async (data) => {
     resolve(data)
   })
 }
-function extractImageUrls(data) {
+function extractImageUrls (data) {
   let text = data
   let urls = []
   let extensions = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'img']

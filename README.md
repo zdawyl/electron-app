@@ -1,4 +1,4 @@
-# electron-app
+# mindshow-app
 
 An Electron application with Vue
 

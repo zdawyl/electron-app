@@ -1,17 +1,23 @@
 <template>
-  <div :id="`ppt${index === 0 ? -1 : index - 1}`" class="pptclass pptconent" v-html="items ? items : ''"></div>
+  <div
+    :id="`ppt${index === 0 ? -1 : index - 1}`"
+    class="pptclass pptconent"
+    v-html="items ? items : ''"
+    :style="{
+      transform: `scale(${previewFlag})`
+    }"
+  ></div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 const props = defineProps({
   items: String,
   index: Number,
-});
-
-onMounted(() => {
-
+  previewFlag: Number
 })
+
+onMounted(() => {})
 </script>
 
 <style scoped lang="less">

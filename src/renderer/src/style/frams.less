@@ -1,0 +1,101 @@
+// 定义一个平移的动画效果
+@keyframes KeyTransY {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes KeyTransX {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+// 定义一个动画，用于hover时显示，从小到大的效果
+@keyframes KeyScaleD {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+.m2p_r_theme_item_hover:not(:hover) {
+  .an_header_tone {
+    animation: KeyTransX 0.1s ease-in-out;
+  }
+
+  .an_header_ttwo {
+    animation: KeyTransX 0.1s ease-in-out;
+  }
+}
+// 自定义的动画效果
+.animate__revealText{
+  -webkit-animation-name: revealText;
+  animation-name: revealText;
+}
+.animate__eraseText{
+  -webkit-animation-name: eraseText;
+  animation-name: eraseText;
+}
+.animate__combinedAnimation{
+  -webkit-animation-name: combinedAnimation;
+  animation-name: combinedAnimation;
+}
+// 定义一个左往右擦除动画
+@keyframes revealText {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+// 从中间往两边擦除动画
+@keyframes eraseText {
+  0% {
+      clip-path: inset(0 50% 0 50%);
+  }
+  100% {
+      clip-path: inset(0 0 0 0);
+  }
+}
+// 从中间往两边擦除动画在加一个心跳快的动画
+@keyframes combinedAnimation {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    transform: scale(1);
+  }
+
+  50% {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1.2);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+// 一个从左往右的擦除动画，加从右往左的放大动画
+@keyframes revealText {
+  0% {
+    clip-path: inset(0 100% 0 0);
+
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}

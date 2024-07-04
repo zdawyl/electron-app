@@ -1,7 +1,8 @@
-import { app, shell, BrowserWindow, ipcMain, autoUpdater } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { join } from 'path'
-import icon from '../../resources/icon.png?asset'
+import { autoUpdateInit } from './autoUpdater'
+import icon from '../renderer/src/assets/svg/mindshow.svg'
 let mainWindow
 function createWindow () {
   // Create the browser window.
@@ -40,7 +41,7 @@ function createWindow () {
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
-
+  autoUpdateInit()
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
   // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
@@ -59,9 +60,6 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
-app.on('ready', () => {
-  autoUpdater.checkForUpdates();
-});
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.

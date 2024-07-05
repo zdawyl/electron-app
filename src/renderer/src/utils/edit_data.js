@@ -2,6 +2,24 @@ import circularJson from 'circular-json'
 import { useCounterStore } from '../stores/index'
 // 传入一个url地址，返回一个图片的base64
 const counterStore = useCounterStore()
+
+// 传入一个url，看看它是否有用，有就返回true，反之false
+export const ExPortCheckUrl = (url) => {
+  return new Promise((resolve) => {
+    let img = new Image();
+    img.onload = function () {
+      resolve({
+        status: true,
+      });
+    };
+    img.onerror = function () {
+      resolve({
+        status: false,
+      });
+    };
+    img.src = url;
+  });
+};
 export const ExPortGetBase64Image = (src) => {
   return new Promise((resolve) => {
     try {
@@ -50,7 +68,9 @@ const edit_list_base64_fn = async (data) => {
   if (typeof data === 'string' && data.includes('http')) {
     let img_urls = extractImageUrls(data)
     for (let i = 0; i < img_urls.length; i++) {
-      if (img_urls[i].includes('www.w3.org/2000/svg')) continue
+      if (img_urls[i].includes('www.w3.org')) continue
+      let res_type = await ExPortCheckUrl(img_urls[i])
+      if (!res_type.status) continue
       let base64 = await ExPortGetBase64Image(img_urls[i])
       if (!base64) continue
       data = data.replace(img_urls[i], base64)

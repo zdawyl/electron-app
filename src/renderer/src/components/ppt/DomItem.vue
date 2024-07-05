@@ -16,7 +16,7 @@
         <template #overlay>
           <a-menu style="border-radius: 5px; padding: 10px 0">
             <a-menu-item key="0" @click="recoverItem(item, index)">
-              <span class="dropdown_style">删除离线</span>
+              <span class="dropdown_style">{{ $t('DeleteOffline') }}</span>
             </a-menu-item>
           </a-menu>
         </template>

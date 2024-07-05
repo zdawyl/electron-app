@@ -1,7 +1,7 @@
 <template>
   <div class="dom_home">
     <div class="dom_head flex_center">
-      离线PPT
+      {{ $t('OfflinePpt') }}
     </div>
     <div class="dom_main">
       <DomLi v-for="(item, index) in state.data" :key="index" :item="item" :index="index" @dom_item="dom_item"
@@ -10,7 +10,7 @@
     </div>
     <MaModal :visible-list="state.visibleList" :visible-data="state.visibleData" @cancel_edit="cancelMaModal"></MaModal>
     <a-button type="primary" class="returnToTheMainPage" @click="router_fn"
-      v-if="counterStore.currentNetwork">返回主页面</a-button>
+      v-if="counterStore.currentNetwork">{{ $t('RetumMain') }}</a-button>
   </div>
 </template>
 

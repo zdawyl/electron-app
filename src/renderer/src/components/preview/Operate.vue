@@ -77,7 +77,7 @@
               <path d="M42 33V42H33" stroke="#575757" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M15 42H6V33" stroke="#575757" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M6 15V6H15" stroke="#575757" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-            </svg><span>打开全屏</span>
+            </svg><span>{{ $t('OpenFull') }}</span>
           </div>
           <div v-else style=" display: flex;align-items: center;">
             <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +94,7 @@
               <path d="M16 41V32H7" stroke="#575757" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M32 41V32H40.8995" stroke="#575757" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round" />
-            </svg><span>退出全屏</span>
+            </svg><span>{{ $t('ExitFull') }}</span>
           </div>
         </a-menu-item>
         <a-menu-item class="previewOperateMeunItem" @click.prevent="ToDirection(3)" style="
@@ -114,7 +114,7 @@
               <path d="M16 23.9917H42" stroke="#575757" stroke-width="2" stroke-linecap="square"
                 stroke-linejoin="round" />
             </svg>
-            <span>结束放映</span>
+            <span>{{ $t('EndShow') }}</span>
           </div>
         </a-menu-item>
 
@@ -138,7 +138,7 @@
                 <path d="M24 26L24 44" stroke="#575757" stroke-width="2" stroke-linecap="square"
                   stroke-linejoin="round" />
               </svg>
-              <span style="margin-left: 10px;">内容展示方式</span>
+              <span style="margin-left: 10px;">{{ $t('ContentDis') }}</span>
             </div>
           </template>
           <a-menu-item class="previewOperateMeunItem" @click.stop="ToDirection(4, 'no')"
@@ -151,7 +151,7 @@
                   stroke-linejoin="round" />
               </svg>
               <div style="width:20px;height:20px;" v-show="hiddenPageElements.isShowOneByOne"></div>
-              <span>一次全部展示</span>
+              <span>{{ $t('ShowThem') }}</span>
             </div>
           </a-menu-item>
           <a-menu-item class="previewOperateMeunItem" @click.stop="ToDirection(4, 'yes')"
@@ -164,7 +164,7 @@
                   stroke-linejoin="round" />
               </svg>
               <div style="width:20px;height:20px;" v-show="!hiddenPageElements.isShowOneByOne"></div>
-              <span>元素逐个展示</span>
+              <span>{{ $t('ElementsAreDis') }}</span>
             </div>
           </a-menu-item>
         </a-sub-menu>
@@ -183,7 +183,7 @@
                 <path d="M33 6L27 15" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M21 6L15 15" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <span style="margin-left: 10px;">动画</span>
+              <span style="margin-left: 10px;">{{ $t('Animation') }}</span>
             </div>
           </template>
           <a-menu-item class="previewOperateMeunItem" @click.stop="ToDirection(6, 'Effect', '0')"
@@ -209,7 +209,7 @@
                   stroke-linejoin="round" />
               </svg>
               <div style="width:20px;height:20px;" v-show="hiddenPageElements.animationEffect !== '1'"></div>
-              <span>平缓</span>
+              <span>{{ $t('Gentle') }}</span>
             </div>
           </a-menu-item>
           <a-menu-item class="previewOperateMeunItem" @click.stop="ToDirection(6, 'Effect', '2')"
@@ -222,7 +222,7 @@
                   stroke-linejoin="round" />
               </svg>
               <div style="width:20px;height:20px;" v-show="hiddenPageElements.animationEffect !== '2'"></div>
-              <span>平缓2</span>
+              <span>{{ $t('Gentle') }}2</span>
             </div>
           </a-menu-item>
           <a-menu-item class="previewOperateMeunItem" @click.stop="ToDirection(6, 'Effect', '3')"
@@ -235,7 +235,7 @@
                   stroke-linejoin="round" />
               </svg>
               <div style="width:20px;height:20px;" v-show="hiddenPageElements.animationEffect !== '3'"></div>
-              <span>活泼</span>
+              <span>{{ $t('Lively') }}</span>
             </div>
           </a-menu-item>
         </a-sub-menu>

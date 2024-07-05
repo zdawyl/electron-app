@@ -11,8 +11,8 @@
     <template v-else>
       <a-result status="404" title="404" sub-title="Sorry, the page you visited does not exist.">
         <template #extra>
-          <a-button type="primary" @click="goToOfflinePage(1)">去离线页面</a-button>
-          <a-button type="primary" @click="goToOfflinePage(2)">刷新当前页面</a-button>
+          <a-button type="primary" @click="goToOfflinePage(1)">{{ $t('GoToPage') }}</a-button>
+          <a-button type="primary" @click="goToOfflinePage(2)">{{ $t('RefreshCurrent') }}</a-button>
         </template>
       </a-result>
     </template>
@@ -81,7 +81,7 @@ onMounted(() => {
     (newVal) => {
       if (!newVal) {
         Modal.confirm({
-          title: '目前没有网络，是否去离线页面',
+          title: $t('ThereNoIs'),
           icon: createVNode(ExclamationCircleOutlined),
           content: createVNode('div', { style: 'color:red;' }, 'Some descriptions'),
           onOk () {

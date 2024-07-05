@@ -1,0 +1,1 @@
+export default {"OfflinePpt":"离线PPT","RetumMain":"返回主页面","GoToPage":"去离线页面","RefreshCurrent":"刷新当前页面","ThereNoIs":"目前没有网络，是否去离线页面","DeleteOffline":"删除离线","OpenFull":"打开全屏","ExitFull":"退出全屏","EndShow":"结束放映","ShowThem":"一次全部展示","ElementsAreDis":"元素逐个展示","ContentDis":"内容展示方式","Animation":"动画","Gentle":"平缓","Lively":"活泼"}

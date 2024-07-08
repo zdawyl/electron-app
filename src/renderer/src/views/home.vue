@@ -30,7 +30,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 const Router = useRouter()
 const counterStore = useCounterStore()
 const state = reactive({
-  iframe_src: 'http://localhost:3000/#/folder/home',
+  iframe_src: 'https://mindshow.fun/test/#/folder/home',
   loadingObj: {
     typeLoding: true,
     type: false

@@ -21,8 +21,7 @@
     "afterSign": "build/notarize.js",
     "mac": {
       "hardenedRuntime": true,
-      "gatekeeperAssess": false,
-      "entitlements": "build/entitlements.mac.plist"
+      "gatekeeperAssess": false
     }
   },
   "dependencies": {
